@@ -21,7 +21,7 @@ class ServerTest(helper.CPWebCase):
 
     def test_send_to_multiline(self):
         Server.send_to('channel', 'msg1\nmsg2', 'msg3')
-        assert Server.queue == ['channel', 'msg1', 'msg2', 'msg3']
+        assert Server.queue == ['channel', 'msg1\nmsg2', 'msg3']
 
     def test_send_to_multiple(self):
         Server.send_to('chan1', 'msg1')
@@ -33,8 +33,7 @@ class ServerTest(helper.CPWebCase):
             'chan2',
             'msg2',
             'chan3',
-            'msg3',
-            'msg4',
+            'msg3\nmsg4',
         ]
 
 
